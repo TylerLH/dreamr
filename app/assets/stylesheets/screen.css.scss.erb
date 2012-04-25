@@ -1,0 +1,115 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);
+@import "compass";
+@import "compass/css3";
+@import "compass/layout/sticky-footer";
+@import "sausage-reset.css";
+@import "sausage.css";
+@import "markitup/skins/macosx/style.css";
+@import "markitup/sets/markmin/style.css";
+
+// bootstrap variables
+$baseFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$gridColumnWidth: 48px;
+$baseFontSize: 14px;
+$baseLineHeight: 19px;
+$linkColor: #4E6692;
+$textColor: #ccc;
+
+$navbarHeight: 80px;
+$navbarBackground: rgba(0,0,0,0);
+$navbarBackgroundHighlight: rgba(0,0,0,0);
+
+// bootstrap & font-awesome icons
+@import "bootstrap";
+@import "font-awesome";
+
+body {
+	//background: url(<%= asset_path 'bg2.png' %>) top center no-repeat;
+	@include background-image(image-url('<%= asset_path 'stars.png' %>'),linear-gradient(bottom, adjust-hue(darken($linkColor,10%),30),$grayDarker));
+	background-attachment: fixed;
+	//overflow: hidden;
+}
+
+.markItUp {
+	background: none;
+	border: none;
+	padding: 0;
+	.markItUpHeader {
+		@include border-radius(4px 4px 0 0);
+		@include background-image(linear-gradient($white,$grayLighter));
+		border-bottom: 1px solid #cacaca;
+	}
+	textarea {
+		@include border-radius(0 0 4px 4px);
+	}
+}
+
+#moon {
+	@include background-image(radial-gradient(45px 45px, #fff 200px, #e5e5e5 350px));
+	width: 400px;
+	height: 400px;
+	@include border-radius(200px);
+	position: fixed;
+	z-index: 1;
+	top: -160px;
+	left: -160px;
+	@include transition-property(all);
+	@include transition-duration(1s);
+	@include opacity(.7);
+	@include box-shadow(rgba(255,255,255,.3) 0 0 70px 1px);
+	&:hover {
+		@include opacity(1);
+	}
+}
+
+@include sticky-footer(40px,"#main","#main-footer","footer");
+@import "topbar";
+@import "main";
+@import "dreams";
+@import "comments";
+
+.page-header {
+	border-color: $gray;
+	font-family: "Oswald", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	position: relative;
+	z-index: 2;
+}
+
+
+// Form Stuff
+label {
+	color: $grayLight;
+}
+.form-actions {
+	background-color: rgba($black,0.1);
+	border: none;
+}
+
+.container.dark {
+	background: rgba(0,0,0,.4);
+	color: #ddd !important;
+	box-sizing: border-box;
+	padding: 2em;
+}
+
+#main {
+	margin-bottom: 5em;
+}
+
+#footer {
+	color: #fff;
+	font-size: 1.5em;
+	text-align: center;
+	@include text-shadow(rgba(0,0,0,.8) 0 1px 2px);
+	line-height: 40px;
+	font-family: "Oswald", Arial;
+}
+
+form input[type=text], form input[type=email], form input[type=password], textarea {
+	background:#f5f5f5;border:1px solid rgba(50,50,50,0.30);-webkit-box-shadow:1px 1px 1px rgba(255,255,255,0.13);-moz-box-shadow:1px 1px 1px rgba(255,255,255,0.13);box-shadow:1px 1px 1px rgba(255,255,255,0.13);
+}

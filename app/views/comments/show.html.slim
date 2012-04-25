@@ -1,0 +1,11 @@
+p#notice = notice
+
+p
+  strong Content:
+  = @comment.content
+  = @comment.dream.inspect
+  = @comment.user.inspect
+
+= link_to 'Edit', edit_comment_path(@comment)
+'|
+= link_to 'Back', comments_path

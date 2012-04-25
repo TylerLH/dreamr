@@ -1,0 +1,76 @@
+// Place all the styles related to the Dreams controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#dreams-list {
+	li {
+		border-bottom: $gray dashed 1px;
+		padding: 1em .5em 1em .5em;
+		@include transition-property(background-color);
+		@include transition-duration(.5s);
+		a {
+			color: $grayLighter;
+			&:hover {
+				color: $white;
+			}
+		}
+		.author {
+			color: $grayLight;
+		}
+		.description {
+			margin: 1em 0;
+		}
+		.actions {
+			font-size: 18px;
+			line-height: 23px;
+		}
+		.like-count {
+			font-size: .7em;
+			padding-top: .6em;
+			margin-left: .5em;
+		}
+		&:hover {
+			background: rgba(0,0,0,.2);
+		}
+	}
+}
+
+li.dream {
+		border-bottom: $gray dashed 1px;
+		padding: 1em .5em 1em .5em;
+		@include transition-property(background-color);
+		@include transition-duration(.5s);
+		a {
+			color: $grayLighter;
+			&:hover {
+				color: $white;
+			}
+		}
+		.author {
+			color: $grayLight;
+		}
+		.description {
+			margin: 1em 0;
+		}
+		.actions {
+			font-size: 18px;
+			line-height: 23px;
+		}
+		.like-count {
+			font-size: .7em;
+			padding-top: .6em;
+			margin-left: .5em;
+		}
+		.stats {
+			font-size: .7em;
+		}
+		&:hover {
+			background: rgba(0,0,0,.2);
+		}
+	}
+
+.dream-description {
+	font-size: 1.3em;
+	line-height: 1.5em;
+	margin-top: 1em;
+}

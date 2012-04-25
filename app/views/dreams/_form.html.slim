@@ -1,0 +1,12 @@
+= simple_form_for(@dream, :html => { :class => "form-stacked" }) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title, :input_html => { :class => "span8" }
+    = f.input :content, :as => :text, :input_html => { :class => "span8", :rows => 6, :placeholder => "Play your dream back in words. What happened? Who was there? Were there any details in particular that caught your interest?" }, :label => "Description"
+    = f.input :user_explanation, :as => :text, :input_html => { :class => "span8", :rows => 3, :placeholder => "What factors do you think influenced your dream? Do you believe there was any metaphorical meaning to it?" }, :label => "Explanation"
+    = f.input :public, :as => :boolean, :label => "Make dream public", :hint_html => { :class => ""}, :wrapper => :checkbox
+    = f.input :anonymous, :as => :boolean, :label => "Post dream anonymously", :wrapper => :checkbox
+
+  .form-actions
+    = f.button :submit, :class => "btn btn-primary btn-large"

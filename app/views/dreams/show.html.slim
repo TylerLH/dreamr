@@ -1,0 +1,32 @@
+.container.dark
+	h1= @dream.title
+	span #{time_ago_in_words(@dream.created_at)} ago by 
+	strong= @dream.user.username
+	|  
+	= gravatar_image_tag(@dream.user.email, :gravatar => { :size => 30 })
+
+	.dream-description
+		== Kramdown::Document.new(@dream.content).to_html
+
+	#comments
+		h3
+			i.icon-comments
+			|  Discussion
+
+		ul.unstyled.comment-list
+			= render @dream.comments
+
+		- if user_signed_in?
+			= simple_form_for Comment.new, :remote => false do |f|
+				= f.input :dream, :as => :hidden, :input_html => { :value => @dream.id.to_s }
+				= f.input :user, :as => :hidden, :input_html => { :value => current_user.try(:id).to_s }
+				= f.input :content, :as => :text, :label => "Leave a comment", :input_html => { :rows => 3, :class => "span11" }
+				.input.clearfix
+					.pull-right
+						= f.submit "Add Comment", :class => "btn btn-primary btn-large"
+		- else
+			= link_to "Sign up", new_user_registration_path
+			|  or 
+			= link_to "Sign in", new_user_session_path
+			|  to add a comment.
+

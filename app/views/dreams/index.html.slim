@@ -1,0 +1,15 @@
+title browse all dreams
+.container.dark
+  .page-header
+    h1 
+      i.icon-list
+      |  browse dreams
+
+  .row
+    .span11
+      ul.unstyled#dreams-list
+        .page
+          = render @dreams
+  .row
+    .span11
+      = link_to 'New Dream', new_dream_path, :class => "btn btn-primary"

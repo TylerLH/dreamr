@@ -1,0 +1,34 @@
+title edit your account
+.container.dark
+  .page-header
+    h2
+      | My Account Settings
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+    = devise_error_messages!
+    div
+      = f.label "My profile image"
+      = gravatar_image_tag(current_user.email, :alt => current_user.username, :gravatar => { :default => :wavatar, :size => 100 })
+      span.help-block Soundparty uses your Gravatar for a profile image.  
+      a(href="http://gravatar.com" title="Get a universal avatar at Gravatar") Get your own Gravatar here.
+    div
+      = f.label :username
+      = f.text_field :username
+    div
+      = f.label :email
+      = f.email_field :email
+    div
+      = f.label :password
+      = f.password_field :password, :autocomplete => "off"
+      span.help-inline= "(leave blank if you don't want to change password)"
+    div
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, :autocomplete => "off"
+    div
+      = f.label :current_password
+      = f.password_field :current_password, :autocomplete => "off"
+      span.help-inline (your current password is required to make any changes)
+    div= f.submit "Update", :class => "btn btn-primary btn-large"
+  h3 Cancel my account
+  p
+    | Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete}.
+  = link_to "Back", :back

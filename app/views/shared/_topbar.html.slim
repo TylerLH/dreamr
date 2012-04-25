@@ -1,0 +1,33 @@
+.container
+	.navbar
+		.navbar-inner
+			.container
+				a.logo.pull-left(href="/") drea.mr
+				ul.nav.pull-left(style="margin-left: 2em")
+					li
+						= link_to "Browse Dreams", dreams_path, 'data-skip-pjax' => 'data-skip-pjax'
+				ul.nav.pull-right
+					- if user_signed_in?
+						li.dropdown
+							a.dropdown-toggle(data-toggle="dropdown" href="#") 
+								= gravatar_image_tag(current_user.email, :gravatar => { :size => 25 }, :style => "margin-right: 5px")
+								|  #{current_user.username}
+							ul.dropdown-menu
+								li 
+									a(href="#{me_dreams_path}" title="My Dreams")
+										i.icon-home
+										|  My Dreams
+								li.divider
+								li
+									a(href="#{destroy_user_session_path}" title="Sign out" data-method="delete")
+										i.icon-signout
+										|  Sign out
+					- else
+						li
+							a(href="#{new_user_session_path}")
+								i.icon-signin
+								|  Sign in
+						li
+							a(href="#{new_user_registration_path}")
+								i.icon-user
+								|  Sign up

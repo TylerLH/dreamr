@@ -1,0 +1,7 @@
+/ _comment.html.slim
+
+li.comment
+	- if comment.user.id == current_user.try(:id)
+		= link_to "x", comment, :method => :delete, :title => "Delete this comment", :confirm => "Delete your comment?", :class => "pull-right delete-user-comment"
+	p.comment-author #{gravatar_image_tag(comment.user.email, :gravatar => { :size => 20 } )} #{time_ago_in_words(comment.created_at)} ago #{comment.user.username} said
+	p= comment.content

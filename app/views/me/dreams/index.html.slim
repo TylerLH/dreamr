@@ -1,0 +1,15 @@
+title my dreams
+.container.dark
+  .page-header.clearfix
+    h1.pull-left
+      i.icon-list
+      |  my dreams
+    .pull-right
+      a.btn.btn-primary.btn-large(href="#{new_me_dream_path}" title="Log a new dream")
+        i.icon-pencil
+        |  Log a new dream
+
+  .row
+    .span11
+      ul.unstyled
+        = render @dreams

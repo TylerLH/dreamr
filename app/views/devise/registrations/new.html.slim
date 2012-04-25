@@ -1,0 +1,27 @@
+title create an account
+.container.dark
+  .page-header
+    h2 
+      i.icon-plus-sign
+      |  Create your drea.mr account
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    .input
+      = f.label :email
+      = f.email_field :email, :placeholder => "you@example.com"
+    .input
+      = f.label :username
+      = f.text_field :username, :placeholder => "Choose a username"
+    .input
+      = f.label :password
+      = f.password_field :password, :placeholder => "Enter a password"
+    .input
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, :placeholder => "Re-type password"
+    div= f.submit "Create my account", :class => "btn btn-primary btn-large"
+  = render "links"
+  br
+  p(style="font-size: .8em")
+    strong Spam SUCKS.
+    br
+    |  I'll only send mail when I have to, and I'll never share your info with anyone.

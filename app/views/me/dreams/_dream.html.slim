@@ -1,0 +1,17 @@
+li.dream
+  h2= link_to dream.title, dream
+  - if dream.user.email == current_user.email
+    i.author #{gravatar_image_tag(dream.user.email, :gravatar => { :size => 20 }, :style => "border-radius: 4px")} You posted this #{time_ago_in_words(dream.created_at)} ago
+  - else
+    i.author Posted by #{gravatar_image_tag(dream.user.email, :gravatar => { :size => 20 }, :style => "border-radius: 4px")} #{dream.user.username} #{time_ago_in_words(dream.created_at)} ago
+  p.description= dream.content
+  .actions.clearfix
+    .vote.pull-left
+      p.like-count 
+        i.icon-thumbs-up
+        |  #{dream.up_votes_count} likes 
+        i.icon-thumbs-down
+        |  #{dream.down_votes_count} dislikes
+    .stats.pull-right
+      i.icon-comments
+      |  #{dream.comments.count} comments

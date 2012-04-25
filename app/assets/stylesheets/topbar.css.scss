@@ -1,0 +1,45 @@
+.logo {
+	font-family: "Oswald", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: $white;
+	font-size: 24px;
+	line-height: 70px;
+	font-weight: bold;
+	@include text-shadow(rgba(0,0,0,.4) 0 1px 1px);
+	@include transition-property(color);
+	@include transition-duration(.5s);
+	&:hover {
+		text-decoration: none;
+		color: $yellow;
+	}
+}
+
+.navbar {
+	height: $navbarHeight;
+
+	.container {
+		height: 100%;
+	}
+
+	.nav {
+		height: 100%;
+
+		li {
+			//height: 100%;
+
+			a {
+				height: 100%;
+				line-height: ($navbarHeight * .75);
+			}
+		}
+
+		.dropdown-menu li a {
+			line-height: 19px;
+		}
+	}
+}
+
+.navbar-inner {
+	height: $navbarHeight;
+	box-shadow: none;
+	border-bottom: 1px dashed $gray;
+}

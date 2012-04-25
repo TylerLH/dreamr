@@ -1,0 +1,29 @@
+li
+  h2= link_to dream.title, dream
+  i.author Posted by #{gravatar_image_tag(dream.user.email, :gravatar => { :size => 20 }, :style => "border-radius: 4px")} #{dream.user.username} #{time_ago_in_words(dream.created_at)} ago
+  p.description= dream.content
+  .actions.clearfix
+    .vote.pull-left.clearfix
+      .pull-left
+        - if user_signed_in?
+          .btn-group
+            - if dream.voted_by? current_user
+              a.btn.btn-primary(href="#{dream_unvote_path(dream)}" data-method="post")
+                i.icon-thumbs-up
+                |  Unlike
+            - else
+              a.btn.btn-primary(href="#{dream_vote_up_path(dream)}" data-method="post")
+                i.icon-thumbs-up
+                |  Like
+            a.btn.btn-primary(href="#{dream_vote_down_path(dream)}" data-method="post")
+              i.icon-thumbs-down
+        - else
+          a.btn.btn-primary(href="#{new_user_registration_path}" title="Sign up to like this dream") Sign up to vote
+      p.like-count.pull-left #{dream.up_votes_count} likes / #{dream.down_votes_count} dislikes
+    .stats.pull-right
+      a.btn.btn-inverse(href="#{dream_path(dream.id)}/#comments")
+        i.icon-comments
+        |  Discuss (#{dream.comments.count})
+      |  
+      a.btn.btn-danger.btn-mini(href="#")
+        i.icon-flag

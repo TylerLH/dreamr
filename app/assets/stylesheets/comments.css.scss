@@ -1,0 +1,44 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#comments h3 {
+	border-top: 1px dashed $grayLight;
+	margin-top: 1em;
+	padding-top: 1em;
+}
+
+.comment {
+	background: rgba(0,0,0,.2);
+	@include border-radius(15px);
+	padding: 1em;
+	margin: 2em 0;
+	position: relative;
+	&:nth-child(even):after {
+		content:"";
+	    width:0;
+	    height:0;
+	    border-top:20px solid transparent;
+	    border-bottom:20px solid transparent;
+	    border-left:20px solid rgba(0,0,0,.2);
+	    position: absolute;
+	    bottom: -30px;
+	    right: 60px;
+	    @include transform(rotate(90deg));
+	}
+	&:nth-child(odd):after {
+		content:"";
+	    width:0;
+	    height:0;
+	    border-top:20px solid transparent;
+	    border-bottom:20px solid transparent;
+	    border-left:20px solid rgba(0,0,0,.2);
+	    position: absolute;
+	    bottom: -30px;
+	    left: 60px;
+	    @include transform(rotate(90deg));
+	}
+	.comment-author {
+		font-size: .8em;
+	}
+}

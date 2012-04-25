@@ -1,0 +1,9 @@
+.container.dark
+	h1= @dream.title
+	span #{time_ago_in_words(@dream.created_at)} ago by 
+	strong= @dream.user.username
+	|  
+	= gravatar_image_tag(@dream.user.email, :gravatar => { :size => 30 })
+
+	.dream-description
+		= @dream.content
